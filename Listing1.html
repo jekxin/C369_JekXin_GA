@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Jek xin's GA </title>
+    <style>
+        .navbar .nav-link {
+            color: black;
+            font-size: medium;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            padding: 18px;
+            border-bottom: 1.8px solid black;
+            border-bottom-left-radius: 9px;
+            border-bottom-right-radius: 9px;
+        }
+
+        .navbar-brand img {
+            max-height: 72px;
+            padding-left: 45px;
+            padding-right: 45px;
+        }
+
+        body {
+            background-color: #f9eee3;
+            font-size: 18px;
+        }
+
+        header {
+            font-family: Arial;
+            font-size: 14px;
+        }
+
+        .icon {
+            height: 27px;
+        }
+
+        .nav-item {
+            padding-right: 36px;
+        }
+
+        .nav-item-icon {
+            padding-right: 7.2px;
+        }
+
+        .dropdown {
+            padding-right: 540px;
+        }
+
+        .container {
+            margin-top: 60px;
+        }
+
+        .card-img {
+            width: 75%;
+            margin-left: 100px;
+        }
+
+        .small-images {
+            margin-top: 20px;
+        }
+
+        .small-images img {
+            width: 60%;
+            border-radius: 5px;
+        }
+
+        .small_image_1 {
+            margin-left: 120px;
+        }
+
+        .small_image_2 {
+            margin-left: 60px;
+        }
+
+        .small_image_3 {
+            margin-left: 0px;
+        }
+
+        .product-title {
+            font-size: 13px;
+        }
+
+        .product-subtitle {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .payment-option {
+            font-size: 18px;
+        }
+
+        .color-options button {
+            border: 1px solid black;
+            background-color: white;
+            margin-right: 5px;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-bottom: 30px;
+        }
+
+        .quantity-selector {
+            width: 150px;
+            height: 50px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            width: 80%;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .add-to-cart:hover {
+            background-color: #979696;
+        }
+    </style>
+    <script>
+        function AddToCart() {
+            var imageSrc = "images/Cart_item.png";
+            document.getElementById("after-click").src = imageSrc;
+            document.getElementById("Increase-quantity").innerHTML = "Quantity (1 in cart)";
+            alert("Item successfully added to cart!");
+        }
+
+        function small_image_1() {
+            var imageSrc = "images/Listing_1.png";
+            document.querySelector(".card-img").src = imageSrc;
+        }
+
+        function small_image_2() {
+            var imageSrc = "images/Listing1_xtra (1).png";
+            document.querySelector(".card-img").src = imageSrc;
+        }
+
+        function small_image_3() {
+            var imageSrc = "images/Listing1_xtra (2).png";
+            document.querySelector(".card-img").src = imageSrc;
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home.html"> <img src="images/Logo.png" alt="Logo"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Films</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Cameras</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">35mm</a></li>
+                            <li><a class="dropdown-item" href="#">Polaroid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-icon">
+                        <a class="nav-link" href="#">
+                            <img src="images/Search.png" alt="Search Icon" class="icon">
+                        </a>
+                    </li>
+                    <li class="nav-item-icon">
+                        <a class="nav-link" href="#">
+                            <img src="images/Profile.png" alt="Profile Icon" class="icon">
+                        </a>
+                    </li>
+                    <li class="nav-item-icon">
+                        <a class="nav-link" href="Cart.html">
+                            <img src="images/Cart.png" alt="Shopping Cart Icon" class="icon" id="after-click">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img" src="images/Listing_1.png" alt="Listing-1">
+                    <div class="row small-images">
+                        <div class="col-4">
+                            <img class="small_image_1" src="images/Listing_1.png" alt="Listing-1" onclick="small_image_1()">
+                        </div>
+                        <div class="col-4">
+                            <img class="small_image_2" src="images/Listing1_xtra (1).png" alt="Listing-2" onclick="small_image_2()">
+                        </div>
+                        <div class="col-4">
+                            <img class="small_image_3" src="images/Listing1_xtra (2).png" alt="Listing-3" onclick="small_image_3()">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-md-6">
+                <p class="product-title">KODAK</p>
+                <p class="product-subtitle">Kodak Ektar H35 / H35N Half Frame 35mm Film Camera</p>
+                <p class="product-price">$62.00 SGD</p>
+                <p class="payment-option">or 3 payments of $20.67 SGD with Atome</p>
+                <p>Color</p>
+                <div class="color-options">
+                    <button>H35 Black</button>
+                    <button>H35 Brown</button>
+                    <button>H35 Sage</button>
+                    <button>H35 Sand</button>
+                </div>
+                <p id="Increase-quantity">Quantity</p>
+                <div class="quantity-selector">
+                    <span>-</span>
+                    <span>1</span>
+                    <span>+</span>
+                </div>
+                <a onclick="AddToCart()" class="add-to-cart">Add to cart</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

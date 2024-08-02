@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Jek xin's GA </title>
+    <style>
+        .navbar .nav-link {
+            color: black;
+            font-size: medium;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            padding: 18px;
+            border-bottom: 1.8px solid black;
+            border-bottom-left-radius: 9px;
+            border-bottom-right-radius: 9px;
+        }
+
+        .navbar-brand img {
+            max-height: 72px;
+            padding-left: 45px;
+            padding-right: 45px;
+        }
+
+        body {
+            background-color: #f9eee3;
+        }
+
+        header {
+            font-family: Arial;
+            font-size: 14px;
+        }
+
+        .icon {
+            height: 27px;
+        }
+
+        .nav-item {
+            padding-right: 36px;
+        }
+
+        .nav-item-icon {
+            padding-right: 7.2px;
+        }
+
+        .dropdown {
+            padding-right: 540px;
+        }
+
+        .col-md-7 {
+            border-right: 2px solid black;
+            padding: 120px;
+            padding-top: 30px;
+        }
+        
+        .form-control {
+            height: 60px; 
+            font-size: 16px; 
+        }
+
+        .pay-button {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px;
+        }
+
+        .pay-button:hover {
+            background-color: #000;
+            color: #c7c7c7;
+        }
+
+        .pay-button:active {
+            background-color: #000;
+            color: #c7c7c7;
+        }
+
+        .checkout-details {
+            font-size: 16px;
+        }   
+
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .checkout-item-info {
+            margin-left: 10px;
+        }
+
+        .checkout-item-price {
+            font-size: 16px;
+            padding-right: 10px;
+            padding-top: 30px;
+        }
+
+        .col-md-5 {
+            padding: 80px;
+        }
+
+        .col-md-5 img {
+            width: 14%;
+            border-radius: 7%;
+        }
+
+        .payment-options {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .payment-option {
+            display: flex;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .payment-option label span {
+            flex: auto;
+            margin-left: 10px;
+        }
+
+        .payment-option img {
+            height: 38px;
+            margin-left: 10px;
+        }
+
+        .paylater-option {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function afterSelectingPaylater() {
+            var ReminderHTML = '<div class="paylater-option">' +
+                '<img src="https://cdn-icons-png.flaticon.com/128/13011/13011634.png" alt="Next Browser Icon" style="height: 80px;">' +
+                '<p>After clicking "Pay now", you will be redirected to VintageSnap PayLater - 3 easy payments, 0% interest to complete your purchase securely.</p>' +
+                '</div>';
+            document.getElementById("Redirected-Reminder").innerHTML = ReminderHTML;
+        }
+
+        function afterSelectingDifferentBillingAddress() {
+            var billingAddressHTML = '<div class="mb-3">' + '<br>' +
+                '<input type="text" class="form-control" id="address" name="address" placeholder="Address">' +
+                '</div>' +
+                '<div class="mb-3">' +
+                '<input type="text" class="form-control" id="apartment" name="apartment" placeholder="Apartment, suite, etc. (optional)">' +
+                '</div>' +
+                '<div class="mb-3">' +
+                '<input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="Postal Code">' +
+                '</div>';
+            document.getElementById("billing-address").innerHTML = billingAddressHTML;
+        }
+
+        function removeBillingAddress() {
+             document.getElementById("billing-address").innerHTML = '';
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home.html"> <img src="images/Logo.png" alt="Logo"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Films</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Cameras</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">35mm</a></li>
+                            <li><a class="dropdown-item" href="#">Polaroid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-icon">
+                        <a class="nav-link" href="#">
+                            <img src="images/Search.png" alt="Search Icon" class="icon">
+                        </a>
+                    </li>
+                    <li class="nav-item-icon">
+                        <a class="nav-link" href="#">
+                            <img src="images/Profile.png" alt="Profile Icon" class="icon">
+                        </a>
+                    </li>
+                    <li class="nav-item-icon">
+                        <a class="nav-link" href="Cart.html">
+                            <img src="images/Cart_item.png" alt="Shopping Cart Icon" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <div class="checkout-container">
+        <div class="row">
+            <div class="col-md-7">
+                <h4>Payment</h4>
+                <p>All transaction are secured and encrypted.</p>
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <input type="radio" id="credit-card" name="payment" value="credit-card">
+                        <label for="credit-card">
+                            <span>Credit Card</span>
+                            <img src="https://cdn-icons-png.flaticon.com/128/15398/15398152.png" alt="Visa Icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/15398/15398050.png" alt="MasterCard Icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/179/179431.png" alt="Amex Icon">
+                            <img src="https://cdn-icons-png.flaticon.com/128/15398/15398132.png" alt="UnionPay Icon">
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="paypal" name="payment" value="paypal">
+                        <label for="paypal">
+                            <span>Paypal</span>
+                            <img src="https://cdn-icons-png.flaticon.com/128/196/196566.png" alt="Paypal Icon">
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="ewallet" name="payment" value="ewallet">
+                        <label for="ewallet">
+                            <span>QR code</span>
+                            <img src="https://www.investing.co.uk/wp-content/uploads/2023/02/PayNow-brokers.png" alt="E-wallet Icon">
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="cash" name="payment" value="cash">
+                        <label for="cash">
+                            <span>Cash on Delivery</span>
+                            <img src="https://cdn-icons-png.flaticon.com/128/4766/4766874.png" alt="Cash Icon">
+                        </label>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="paylater" name="payment" value="paylater" onclick="afterSelectingPaylater()">
+                        <label for="paylater">
+                            <span>VintageSnap PayLater - 3 easy payments, 0% interest</span>
+                            <img src="https://cdn-icons-png.flaticon.com/128/9359/9359487.png" alt="PayLater Icon">
+                        </label>
+                    </div><br>
+                    <div id="Redirected-Reminder"></div>
+                    <div class="mb-3">
+                        <h4>Billing address</h4>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delivery" id="ship" value="ship" onclick="removeBillingAddress()">
+                                <label class="form-check-label" for="ship">Same as shipping address</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="delivery" id="pickup" value="pickup" onclick="afterSelectingDifferentBillingAddress()">
+                                <label class="form-check-label" for="pickup">Use a different billing address</label>
+                            </div>
+                            <div id="billing-address"></div>
+                        </div>
+                    </div><br>
+                    <a href="PayLater.html"  class="btn btn-primary pay-button">Pay now</a>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="checkout-details">
+                    <div class="checkout-item">
+                        <img src="images/Listing_1.png" alt="Product Image">
+                        <div class="checkout-item-info">
+                            <span>Kodak Ektar H35 / H35N Half Frame 35mm Film Camera</span><br>
+                            <span style="font-size:14px">H35 Black</span>
+                        </div>
+                        <span class="checkout-item-price">$62.00</span>
+                    </div>
+                    <form>
+                        <div class="mb-3 d-flex">
+                            <input type="text" class="form-control me-2" id="discount-code" name="discount-code" placeholder="Discount code or gift card">
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                        </div>
+                    </form>
+                    <div class="d-flex justify-content-between">
+                        <span>Subtotal</span>
+                        <span>$62.00 SGD</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Delivery</span>
+                        <span>1.50 SGD</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span><b>Total</b></span>
+                        <span><b>$63.50 SGD</b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
