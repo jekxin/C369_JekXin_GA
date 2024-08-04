@@ -138,10 +138,8 @@
 
             balance += amount;
             
-            // Update the balance display
             document.getElementById('balance').innerHTML = `<b>S$${balance.toFixed(2)}</b>`;
 
-            // Add transaction to the table
             const transactionTable = document.getElementById('transactionTable');
             const row = document.createElement('tr');
             row.innerHTML = `
@@ -154,6 +152,8 @@
             transactionTable.appendChild(row);
      
             transactionId++;
+
+            alert('Top Up is Successful!');
    
             document.getElementById('topUpForm').reset();
         });
