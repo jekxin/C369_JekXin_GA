@@ -97,6 +97,36 @@
             background-color: rgb(228, 227, 227);
         }
     </style>
+    <script>
+        function selectPlan(planId) {
+            document.getElementById('payIn3').classList.remove('selected-plan');
+            document.getElementById('payIn6').classList.remove('selected-plan');
+            document.getElementById(planId).classList.add('selected-plan');
+
+            if (planId === 'payIn3') {
+                document.getElementById('totalPayable').innerHTML = '<b>S$20.67</b>';
+                document.getElementById('orderAmount').innerHTML =  'S$62.00';
+                document.getElementById('feesIncluded').innerHTML = 'Includes S$0.00 fees';
+                document.getElementById('payToday').innerHTML = 'Pay Today <b>S$20.67</b>';
+            } else if (planId === 'payIn6') {
+                document.getElementById('totalPayable').innerHTML = '<b>S$10.85</b>';
+                document.getElementById('orderAmount').innerHTML = 'S$62.00';
+                document.getElementById('feesIncluded').innerHTML = 'Includes S$3.10 fees';
+                document.getElementById('payToday').innerHTML = 'Pay Today <b>S$10.85</b>';
+            }
+        }
+
+        function confirmPurchase() {
+            alert("Item has been purchased");
+        }
+
+        function updateWalletAmount() {
+            const walletAmount = localStorage.getItem('WalletAmount') || 'S$0.00';
+            document.getElementById('WalletAmount').innerText = walletAmount;
+        }
+
+        window.onload = updateWalletAmount;
+    </script>
 </head>
 
 <body>
@@ -124,7 +154,7 @@
                             <label>
                                 <input type="radio" name="paymentPlan" onclick="selectPlan('payIn3')" checked> Pay in 3
                             </label>
-                            <span><b>S$7.80</b></span>
+                            <span><b>S$20.67</b></span>
                         </div>
                         <div>No fee, 1st payment</div>
                     </div>
@@ -133,7 +163,7 @@
                             <label>
                                 <input type="radio" name="paymentPlan" onclick="selectPlan('payIn6')"> Pay in 6
                             </label>
-                            <span><b>S$4.11</b></span>
+                            <span><b>S$10.85</b></span>
                         </div>
                         <div>Fee included, 1st payment</div>
                     </div>
@@ -141,14 +171,15 @@
                         <hr>
                         <div class="d-flex justify-content-between">
                             <h4>Total Payable</h4>
-                            <p><b>S$23.50</b></p>
+                            <p id="totalPayable"><b>S$20.67</b></p>
                         </div>
-                        <div style="text-align: right;">Includes S$0.00 fees</div>
+                        <div style="text-align: right;" id="feesIncluded">Includes S$0.00 fees</div>
                     </div>
                 </div>
                 <p style="margin-top: 10px; padding: 10px; margin-bottom: 100px;">*if auto-deduction fails on the due
                     date, an admin fee of S$15 applies for each late bill payment.</p>
             </div>
+
             <div class="col-md-6">
                 <div class="payment-method">
                     <h4>Order Details</h4>
@@ -159,7 +190,7 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <p>Order Amount:</p>
-                        <p><b>S$23.50</b></p>
+                        <p id="orderAmount">S$62.00</p>
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between">
@@ -169,31 +200,20 @@
                     <div class="d-flex justify-content-between">
                         <div>Amount:</div>
                         <span><a style="margin-right: 10px; font-size: 12px; padding: 5px;" href="ewallet.html" class="btn btn-primary">Top Up</a>
-                        <b>$0</b></span>
+                        <b id="WalletAmount">$0</b></span>
                     </div>
                 </div>
+
                 <div class="formation">
                     <p> <input type="checkbox"> I agree that my purchase in installments shall be made through the
-                        BNPL
-                        Program (subject to <a href="#">BNPL T&Cs</a>
-                        and <a href="#">Privacy Notice</a>) or VintageSnap, Deferred Payment Structure (subject to
-                        <a href="#">VintageSnap
-                            Deferred Payment Agreement, Terms of Services, Privacy Policy.</a>), and I read,
-                        understood,
-                        and
-                        agree to be bound by
-                        applicable terms, I decalre that I do not have other Alias, Married or Hanyu Pinyin Names
-                        and/or
-                        multiple nationlities.
+                        BNPL Program (subject to <a href="#">BNPL T&Cs</a> and <a href="#">Privacy Notice</a>) or VintageSnap, 
+                        Deferred Payment Structure (subject to <a href="#">VintageSnap Deferred Payment Agreement, Terms of Services,
+                        Privacy Policy.</a>), and I read, understood, and agree to be bound by applicable terms, I decalre that 
+                        I do not have other Alias, Married or Hanyu Pinyin Names and/or multiple nationlities.
                     </p>
-                    <p> <input type="checkbox"> I consent to SCB sharing my data relating to my BNPL application
-                        with
-                        VintageSnap for purposes which may not
-                        directly relate to BNPL in accordance with the SCB Privacy Notice. To understand further how
-                        and
-                        why
-                        we share
-                        data with VintageSnap, please refer to Section 5 of the SCB Privacy Notice above.
+                    <p> <input type="checkbox"> I consent to SCB sharing my data relating to my BNPL application with VintageSnap 
+                        for purposes which may not directly relate to BNPL in accordance with the SCB Privacy Notice. To
+                        understand further how and why we share data with VintageSnap, please refer to Section 5 of the SCB Privacy Notice above.
                     </p>
                     <span>
                         <img src=https://cdn-icons-png.flaticon.com/128/4508/4508316.png alt="Compliance Icon"
@@ -207,17 +227,30 @@
     </div>
 
     <div class="footer d-flex align-items-center">
-        <div class="pay-today">Pay Today <b>S$7.80</b></div>
-        <button class="btn btn-dark">Confirm</button>
+        <div id="payToday" class="pay-today">Pay Today <b>S$20.67</b></div>
+        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">Confirm</button>
     </div>
 
-    <script>
-        function selectPlan(planId) {
-            document.getElementById('payIn3').classList.remove('selected-plan');
-            document.getElementById('payIn6').classList.remove('selected-plan');
-            document.getElementById(planId).classList.add('selected-plan');
-        }
-    </script>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+    
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Purchase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <p>Are you sure you want to confirm this purchase?</p>
+                </div>
+    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                    <a href=index.html type="button" class="btn btn-primary" onclick="confirmPurchase()">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>    
 </body>
 
 </html>

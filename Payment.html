@@ -160,6 +160,10 @@
             document.getElementById("Redirected-Reminder").innerHTML = ReminderHTML;
         }
 
+        function removeRedirectedMessage() {
+            document.getElementById("Redirected-Reminder").innerHTML = '';
+        }
+
         function afterSelectingDifferentBillingAddress() {
             var billingAddressHTML = '<div class="mb-3">' + '<br>' +
                 '<input type="text" class="form-control" id="address" name="address" placeholder="Address">' +
@@ -174,7 +178,7 @@
         }
 
         function removeBillingAddress() {
-             document.getElementById("billing-address").innerHTML = '';
+            document.getElementById("billing-address").innerHTML = '';
         }
     </script>
 </head>
@@ -233,7 +237,7 @@
                 <p>All transaction are secured and encrypted.</p>
                 <div class="payment-options">
                     <div class="payment-option">
-                        <input type="radio" id="credit-card" name="payment" value="credit-card">
+                        <input type="radio" id="credit-card" name="payment" value="credit-card" onclick="removeRedirectedMessage()">
                         <label for="credit-card">
                             <span>Credit Card</span>
                             <img src="https://cdn-icons-png.flaticon.com/128/15398/15398152.png" alt="Visa Icon">
@@ -243,21 +247,21 @@
                         </label>
                     </div>
                     <div class="payment-option">
-                        <input type="radio" id="paypal" name="payment" value="paypal">
+                        <input type="radio" id="paypal" name="payment" value="paypal" onclick="removeRedirectedMessage()">
                         <label for="paypal">
                             <span>Paypal</span>
                             <img src="https://cdn-icons-png.flaticon.com/128/196/196566.png" alt="Paypal Icon">
                         </label>
                     </div>
                     <div class="payment-option">
-                        <input type="radio" id="ewallet" name="payment" value="ewallet">
+                        <input type="radio" id="ewallet" name="payment" value="ewallet" onclick="removeRedirectedMessage()">
                         <label for="ewallet">
                             <span>QR code</span>
                             <img src="https://www.investing.co.uk/wp-content/uploads/2023/02/PayNow-brokers.png" alt="E-wallet Icon">
                         </label>
                     </div>
                     <div class="payment-option">
-                        <input type="radio" id="cash" name="payment" value="cash">
+                        <input type="radio" id="cash" name="payment" value="cash" onclick="removeRedirectedMessage()">
                         <label for="cash">
                             <span>Cash on Delivery</span>
                             <img src="https://cdn-icons-png.flaticon.com/128/4766/4766874.png" alt="Cash Icon">

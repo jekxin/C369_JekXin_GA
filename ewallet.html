@@ -60,18 +60,16 @@
             margin-bottom: 20px;
         }
 
-        .transaction-list {
-            max-height: 300px;
-            overflow-y: auto;
+        .transaction-table th, .transaction-table td {
+            text-align: center;
         }
 
-        .transaction-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
+        .transaction-table thead {
+            background-color: #f8f9fa;
         }
 
-        .transaction-item:last-child {
-            border-bottom: none;
+        .transaction-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -91,48 +89,76 @@
     <div class="container">
         <div class="balance-card">
             <h3>Available Balance</h3>
-            <p><b>S$0.00</b</p>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-6">
-                <h4>Add Funds</h4>
-                <form>
-                    <div class="mb-3">
-                        <label for="amount" class="form-label">Amount</label>
-                        <span><input type="number" class="form-control" id="amount" placeholder="$0.00">
-                            <button type="submit" class="btn btn-primary">Add Funds</button></span>
-                    </div>
-                </form>
-            </div>
+            <h5  id="balance"><b>S$0.00</b></h5>
         </div>
 
-        <div class="transaction-container">
-            <h4 class="mt-4">Recent Transactions</h4>
-            <div class="transaction-list">
-                <div class="transaction-item">
-                    <div class="d-flex justify-content-between">
-                        <span>Payment to XYZ Store</span>
-                        <span>-$45.00</span>
-                    </div>
-                    <div class="text-muted">Aug 1, 2024</div>
-                </div>
-                <div class="transaction-item">
-                    <div class="d-flex justify-content-between">
-                        <span>Transfer from John Doe</span>
-                        <span>+$150.00</span>
-                    </div>
-                    <div class="text-muted">Jul 29, 2024</div>
-                </div>
-                <div class="transaction-item">
-                    <div class="d-flex justify-content-between">
-                        <span>Subscription Payment</span>
-                        <span>-$15.00</span>
-                    </div>
-                    <div class="text-muted">Jul 25, 2024</div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <h4 class="mb-3">Top-Up</h4>
+                    <form id="topUpForm" class="d-flex align-items-end">
+                        <div class="mb-3 me-2 flex-grow-1">
+                            <input type="number" class="form-control" id="amount" placeholder="$0.00" step="0.01">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-3">Add Funds</button>
+                    </form>
                 </div>
             </div>
         </div>
+     
+
+        <h4 class="mt-4 mb-4 text-center">Transaction History</h4>
+        <table class="table table-striped transaction-table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTable">
+            </tbody>
+        </table>
     </div>
+
+    <script>
+        let balance = 0;
+        let transactionId = 1;
+
+        document.getElementById('topUpForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const amount = parseFloat(document.getElementById('amount').value);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+
+            balance += amount;
+            
+            // Update the balance display
+            document.getElementById('balance').innerHTML = `<b>S$${balance.toFixed(2)}</b>`;
+
+            // Add transaction to the table
+            const transactionTable = document.getElementById('transactionTable');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>#T${transactionId.toString().padStart(4, '0')}</td>
+                <td>${new Date().toLocaleDateString()}</td>
+                <td>Top Up</td>
+                <td>+$${amount.toFixed(2)}</td>
+                <td>Completed</td>
+            `;
+            transactionTable.appendChild(row);
+     
+            transactionId++;
+
+            localStorage.setItem('WalletAmount', `S$${balance.toFixed(2)}`);
+   
+            document.getElementById('topUpForm').reset();
+        });
+    </script>
 </body>
 </html>
